@@ -1,0 +1,94 @@
+<ion-header class="i">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+      defaultHref="/"
+      color="primary"
+      text="Atrás"
+      mode="ios"></ion-back-button>
+    </ion-buttons>
+    <ion-title><h5>Registrarse</h5></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content class="cont">
+  
+
+<ion-card class="cardForm">
+  <ion-card-header>
+    <ion-card-title style="text-align: center;text-decoration: underline;">Formulario de registro</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <form #formulario="ngForm" (ngSubmit) ="onSubmit()"> 
+ 
+  <ion-item class="itemForm"style="--ion-background-color: rgb(194, 189, 189);">
+    <ion-label position="floating">Nombre Completo: </ion-label>
+    <ion-input [(ngModel)]="usuario.nombre" name="nombre" type="text" required clearInput placeholder="Ingrese nombre"></ion-input>
+  </ion-item>
+
+    <!--email-->
+    <ion-item class="itemForm">
+      <ion-label>Email:   </ion-label>
+      <ion-input type="email" placeholder="ingrese Correo"
+                 name="email" [(ngModel)]= "usuario.email"
+                 pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+                 required>
+      </ion-input>
+    </ion-item>
+
+<!--fecha nacimiento-->
+<ion-item class="itemForm">
+  <ion-label>Nacimiento:</ion-label>
+  <ion-datetime monthShortNames="Enero, Feb, Marzo, Abril, Mayo, Junio, Julio, Agosto, Sep, Oct, Nov, Dic" name="fechaNacimiento" [(ngModel)]="usuario.fechaNacimiento"  required displayFormat="MMM D YYYY" min="1900" max="2021"></ion-datetime>
+</ion-item>
+
+
+
+
+     <ion-item class="itemForm">
+      <ion-label>Música preferida:</ion-label>
+      <ion-select name="comboEstilo" [(ngModel)]="usuario.comboEstilo" required placeholder="--">
+        <ion-select-option value="1">Reggaetón</ion-select-option>
+        <ion-select-option value="2">Electrónica</ion-select-option>
+        <ion-select-option value="3">Hip-Hop</ion-select-option>
+        <ion-select-option value="4">Cumbia</ion-select-option>
+        <ion-select-option value="5">Rock</ion-select-option>
+        <ion-select-option value="6">Otro</ion-select-option>
+      </ion-select>
+    </ion-item>
+<!--pw-->
+    <ion-item class="itemForm">
+      <ion-label position="floating">Contraseña: </ion-label>
+      <ion-input type="password" placeholder="8 caracteres máx."
+                 name="password" [(ngModel)]= "usuario.password"
+                 required maxLength="8">
+      </ion-input>
+    </ion-item>
+    <ion-button [disabled] ="formulario.invalid"
+        type="submit" expand="block" routerLink="/inicio">
+      Enviar Datos
+    </ion-button>
+ </form>
+  </ion-card-content>
+</ion-card>
+ 
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title><h5 style="color:rgb(148, 161, 180);text-align: center;">No olvides visitar nuestras redes sociales</h5></ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+       <ion-button style="padding-left: 25px" size="small" target="blank" href="https://www.facebook.com">
+      <ion-icon slot="icon-only" name="logo-facebook"></ion-icon>
+    </ion-button>
+    <ion-button size="small" target="blank" href="https://www.twitter.com">
+      <ion-icon slot="icon-only" name="Logo-twitter"></ion-icon>
+    </ion-button>
+    <ion-button size="small"target="blank" href="https://www.instagram.com">
+      <ion-icon slot="icon-only" name="logo-instagram"></ion-icon>
+    </ion-button> 
+    </ion-card-content>
+  </ion-card>
+</ion-content>
